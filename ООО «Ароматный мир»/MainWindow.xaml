@@ -1,0 +1,27 @@
+﻿<Window x:Class="ООО__Ароматный_мир_.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:ООО__Ароматный_мир_"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800" Icon="/icon.ico">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="100"></RowDefinition>
+            <RowDefinition Height="*"></RowDefinition>
+            <RowDefinition Height="30"></RowDefinition>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row ="0" Background="#FFFFCC99"></Grid>
+        <Grid Grid.Row ="1"></Grid>
+        <Grid Grid.Row ="2" Background="#FFCC6600" ></Grid>
+        
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" Orientation="Horizontal">
+            <Image Source="Res/logo.png" Stretch="Fill"></Image>
+            <TextBlock Margin="10,0,0,0" Text="ООО Ароматный мир" HorizontalAlignment="Center" VerticalAlignment="Center" FontSize="32"></TextBlock>
+        </StackPanel>
+        <Button Content="Назад" Name="BtnBack" Visibility="Hidden" Grid.Row="0" Width="80" Height="30" Click="Button_Click_Back" HorizontalAlignment="Right" Margin="0,0,5,0"></Button>
+        <Frame NavigationUIVisibility="Hidden" ContentRendered="Frame_ContentRendered" x:Name="FrameMain" Grid.Row="1"></Frame>
+    </Grid>
+</Window>

@@ -1,0 +1,93 @@
+﻿<Page x:Class="ООО__Ароматный_мир_.TablePages.PageUser"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:ООО__Ароматный_мир_.TablePages"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="800"
+      Title="PageUser" IsVisibleChanged="Page_IsVisibleChanged_1">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"></RowDefinition>
+            <RowDefinition Height="200*"></RowDefinition>
+            <RowDefinition Height="50"></RowDefinition>
+        </Grid.RowDefinitions>
+        <StackPanel Grid.Row="0" HorizontalAlignment="Center" VerticalAlignment="Center" Orientation="Horizontal">
+            <TextBox SelectionChanged="tbSearch_change" Name="tbSearch" Width="250" HorizontalAlignment="Left"></TextBox>
+            <ComboBox SelectionChanged="CbSort_change" Name="cbSort" Width="130" Margin="50,0,0,0">
+                <ComboBoxItem Content="Дешевые"></ComboBoxItem>
+                <ComboBoxItem Content="Дорогие"></ComboBoxItem>
+            </ComboBox>
+            <ComboBox Name="cbSkidka" Width="130" Margin="50,0,0,0">
+                <ComboBoxItem Content="0-9,99%"></ComboBoxItem>
+                <ComboBoxItem Content="10-14,99%"></ComboBoxItem>
+                <ComboBoxItem Content="15% и более"></ComboBoxItem>
+            </ComboBox>
+        </StackPanel>
+        <ListView Name="Lview" Grid.Row="1" >
+            <ListView.ItemContainerStyle>
+                <Style TargetType="{x:Type ListViewItem}">
+                    <Setter Property="BorderBrush" Value="Black"></Setter>
+                    <Setter Property="BorderThickness" Value="1"></Setter>
+                    <Setter Property="Margin" Value="5"></Setter>
+                </Style>
+            </ListView.ItemContainerStyle>
+            <ListView.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="120"></RowDefinition>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="120"></ColumnDefinition>
+                            <ColumnDefinition Width="*"></ColumnDefinition>
+                            <ColumnDefinition Width="50"></ColumnDefinition>
+                        </Grid.ColumnDefinitions>
+                        <Image Width="120" Height="120" Stretch="Fill" Grid.Row="0" Grid.Column="0">
+                            <Image.Source>
+                                <Binding Path="ProductPhoto">
+                                    <Binding.TargetNullValue>
+                                        <ImageSource>../Res/picture.png</ImageSource>
+                                    </Binding.TargetNullValue>
+                                </Binding>
+                            </Image.Source>
+                        </Image>
+                        <Grid Grid.Column="1" Margin="15,0,0,0">
+                            <Grid.RowDefinitions>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                                <RowDefinition Height="30"></RowDefinition>
+                            </Grid.RowDefinitions>
+                            <Grid.ColumnDefinitions>
+                                <ColumnDefinition Width="350"></ColumnDefinition>
+                                <ColumnDefinition Width="100"></ColumnDefinition>
+                                <ColumnDefinition Width="150"></ColumnDefinition>
+                            </Grid.ColumnDefinitions>
+
+                            <TextBlock Text="{Binding ProductName}" Grid.Row="0" ></TextBlock>
+                            <TextBlock Text="{Binding ProductDescription}" Grid.Row="1" ></TextBlock>
+                            <TextBlock Text="{Binding Manufacturer.Name}" Grid.Row="2" ></TextBlock>
+                            <TextBlock Text="{Binding ProductCost}" Grid.Row="3"></TextBlock>
+
+                            <TextBlock Text="{Binding ProductDiscountAmount}" Grid.Row="2" Grid.Column="1"></TextBlock>
+
+                            <!--<Button Content="Редактировать" Grid.Row="2" Grid.Column="2" Width="150"></Button>-->
+                        </Grid>
+                    </Grid>
+                </DataTemplate>
+            </ListView.ItemTemplate>
+        </ListView>
+        <StackPanel Visibility="Hidden" Orientation="Horizontal" HorizontalAlignment="Right" Grid.Row="2">
+            <Button Content="Добавить" Width="100" Click="BtnClick_Add"></Button>
+            <Button Margin="20,0,20,0" Content="Удалить" Width="100" Click="BtnClick_Delete"></Button>
+        </StackPanel>
+        <StackPanel Orientation="Horizontal" Grid.Row="2">
+            <TextBlock Name="tbCount" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="60"></TextBlock>
+            <TextBlock Margin="30,0,0,0" Name="tbName" Grid.Row="2" VerticalAlignment="Center" HorizontalAlignment="Left" Width="350"></TextBlock>
+        </StackPanel>
+
+    </Grid>
+</Page>
